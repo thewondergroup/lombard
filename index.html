@@ -60,10 +60,10 @@
   .logo{display:block;position:relative;width:132px;height:48px}
   .logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .35s ease}
   .logo .dark{opacity:0}
-  nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 28px}
-  nav a{color:var(--white);text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;transition:color .35s}
+  nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:nowrap;gap:clamp(18px,2vw,32px)}
+  nav a{color:var(--white);text-decoration:none;font-size:13px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;transition:color .35s}
   nav a:hover{color:var(--yellow)}
-  .header-book{min-height:44px;padding:0 22px;font-size:13px}
+  .header-book{min-height:44px;padding:0 22px;font-size:13px;white-space:nowrap;flex-shrink:0}
   .menu-toggle{display:none;background:none;border:1px solid var(--white);width:48px;height:44px;cursor:pointer;color:var(--white)}
   header.scrolled{background:rgba(255,255,255,.98);border-bottom-color:var(--line)}
   header.scrolled .logo .white{opacity:0}
@@ -71,7 +71,7 @@
   header.scrolled nav a{color:var(--ink)}
   header.scrolled nav a:hover{color:var(--green-mid)}
   header.scrolled .menu-toggle{border-color:var(--ink);color:var(--ink)}
-  @media (max-width:1080px){
+  @media (max-width:1240px){
     .menu-toggle{display:inline-flex;align-items:center;justify-content:center;position:relative;z-index:2}
     .logo{position:relative;z-index:2}
     /* Full-screen menu */
@@ -106,7 +106,7 @@
   }
   .nav-extra{display:none}
   .mobile-book{display:none}
-  @media (max-width:1080px){.mobile-book{display:flex}}
+  @media (max-width:1240px){.mobile-book{display:flex}}
   .menu-toggle .i-close{display:none}
   .menu-toggle[aria-expanded="true"] .i-open{display:none}
   .menu-toggle[aria-expanded="true"] .i-close{display:block}
@@ -673,7 +673,7 @@
   toggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); toggle.focus(); } });
-  window.addEventListener('resize', () => { if (innerWidth > 1080) setMenu(false); });
+  window.addEventListener('resize', () => { if (innerWidth > 1240) setMenu(false); });
 
   // Sticky booking bar on mobile, shown once you scroll past the video
   const mobileBook = document.querySelector('.mobile-book');
