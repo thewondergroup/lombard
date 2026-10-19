@@ -313,6 +313,21 @@
     .framed{outline-offset:8px;margin:10px}
     footer{padding-top:56px}
   }
+
+  /* Dining for business: photo cards */
+  .biz-grid{border-top:0;gap:28px}
+  .biz, .biz + .biz{padding:0;border:0}
+  .biz-photo{aspect-ratio:4/3;margin-bottom:20px}
+  .biz h3{margin-top:14px}
+  @media (max-width:720px){
+    .biz-grid{display:grid;grid-auto-flow:column;grid-auto-columns:78%;grid-template-columns:none;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin-right:-24px;padding-right:24px;padding-bottom:12px;scrollbar-width:none}
+    .biz-grid::-webkit-scrollbar{display:none}
+    .biz, .biz + .biz{scroll-snap-align:start;border:0;padding:0}
+    .biz h3{font-size:26px}
+    .biz p{font-size:15px}
+    .business .section-head .btn{order:2;width:100%}
+  }
+  header.scrolled{background:#FFFFFF}
 </style>
 </head>
 <body>
@@ -486,24 +501,28 @@
       </div>
       <div class="biz-grid">
         <div class="biz reveal">
+          <div class="photo biz-photo"><img src="https://static.wixstatic.com/media/002d73_846800af765d46319f0b3ed40ed32ff0f000.jpg/v1/fill/w_900,h_700,al_c,q_85,enc_auto/breakfast.jpg" alt="Coffee at 1 Lombard Street" loading="lazy"></div>
           <span class="biz-time">From 7am</span>
           <h3>Breakfast meetings</h3>
-          <p>Start the day opposite Bank, with proper coffee, a full breakfast menu and a table that's ready when you are.</p>
+          <p>Proper coffee and a full breakfast, opposite Bank.</p>
         </div>
         <div class="biz reveal">
+          <div class="photo biz-photo"><img src="https://static.wixstatic.com/media/002d73_ef8acd956d9445de92d1cc72574cb06c~mv2.jpeg/v1/fill/w_900,h_700,al_c,q_85,enc_auto/lunch.jpg" alt="The brasserie at lunchtime" loading="lazy"></div>
           <span class="biz-time">Weekday lunch</span>
           <h3>Client lunches</h3>
-          <p>Classic brasserie cooking, attentive service and a private room when the conversation needs one.</p>
+          <p>Classic cooking, sharp service, a private room if you need one.</p>
         </div>
         <div class="biz reveal">
+          <div class="photo biz-photo"><img src="https://static.wixstatic.com/media/002d73_c60a105155e84279a3fc19e92c2f9352~mv2.jpg/v1/fill/w_900,h_700,al_c,q_85,enc_auto/dinner.jpg" alt="The dining room set for a group" loading="lazy"></div>
           <span class="biz-time">Groups of any size</span>
           <h3>Team dinners</h3>
-          <p>Set menus, drinks packages and exclusive hire, planned start to finish by our events team.</p>
+          <p>Set menus and exclusive hire, planned by our events team.</p>
         </div>
         <div class="biz reveal">
+          <div class="photo biz-photo"><img src="https://static.wixstatic.com/media/bc6bf3_e17007d2a5074fa9ab6707a201580906~mv2.jpg/v1/fill/w_900,h_700,al_c,q_85,enc_auto/goosebox-office.jpg" alt="Goosebox catering" loading="lazy"></div>
           <span class="biz-time">At your office</span>
           <h3>Goosebox catering</h3>
-          <p>Lombard's kitchen delivered to your boardroom, launch or office party, anywhere in London.</p>
+          <p>Lombard's kitchen, delivered to your boardroom.</p>
         </div>
       </div>
     </div>
