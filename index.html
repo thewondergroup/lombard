@@ -108,35 +108,6 @@
   .mobile-book{display:none}
   @media (max-width:1240px){.mobile-book{display:flex}}
 
-  /* ---- Mobile clarity ---- */
-  .m-only, .header-call, .quick-links{display:none}
-  .open-status{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.92)}
-  .open-status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--yellow)}
-  .open-status.closed::before{background:rgba(255,255,255,.55)}
-  @media (max-width:1240px){
-    nav li.m-only{display:block}
-    /* Centred logo: call on the left, menu on the right */
-    header .wrap{display:grid;grid-template-columns:48px 1fr 48px;align-items:center}
-    .header-call{display:inline-flex;grid-column:1;justify-self:start;align-items:center;justify-content:center;width:48px;height:44px;border:1px solid var(--white);color:var(--white)}
-    header.scrolled .header-call{border-color:var(--ink);color:var(--ink)}
-    .logo{grid-column:2;justify-self:center}
-    .menu-toggle{grid-column:3;justify-self:end}
-  }
-  @media (max-width:720px){
-    /* Quick links under the video */
-    .quick-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
-    .quick-links a{display:flex;align-items:center;gap:12px;min-height:64px;padding:0 18px;background:var(--white);color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
-    .quick-links a.primary{background:var(--yellow)}
-    .quick-links svg{flex-shrink:0;color:var(--green-mid)}
-    .quick-links a.primary svg{color:var(--ink)}
-    /* Compact 2x2 day ribbon */
-    .ribbon .wrap{grid-template-columns:repeat(2,minmax(0,1fr));padding:0}
-    .ribbon a, .ribbon a:first-child{padding:20px 18px;border-right:1px solid rgba(23,50,42,.18);border-bottom:1px solid rgba(23,50,42,.18)}
-    .ribbon a:nth-child(2n){border-right:0}
-    .ribbon a:nth-child(n+3){border-bottom:0}
-    .ribbon b{font-size:22px;margin-top:6px}
-    .ribbon small{font-size:11px;letter-spacing:.18em}
-  }
   /* No menu animations while the window is being resized */
   .resizing nav, .resizing nav li{transition:none !important}
   .menu-toggle .i-close{display:none}
@@ -290,6 +261,58 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.photo img{transition:none}}
+
+  /* ---- Mobile clarity (kept last so it overrides earlier rules) ---- */
+  .m-only, .header-call, .quick-links{display:none}
+  .open-status{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.92)}
+  .open-status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+  .open-status.closed::before{background:rgba(255,255,255,.55)}
+  @media (max-width:1240px){
+    nav li.m-only{display:block}
+    /* Centred logo, plain icons either side */
+    header .wrap{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;padding-top:12px;padding-bottom:12px}
+    .header-call, .menu-toggle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;color:var(--white)}
+    .header-call{grid-column:1;justify-self:start}
+    .menu-toggle{grid-column:3;justify-self:end}
+    header.scrolled .header-call, header.scrolled .menu-toggle{color:var(--ink)}
+    header.menu-open .menu-toggle{color:var(--white)}
+    .logo{grid-column:2;justify-self:center;width:118px;height:42px}
+  }
+  @media (max-width:720px){
+    .video-toggle{display:none}
+    .ribbon{display:none}
+    .hero-inner{padding:110px 24px 80px}
+    .hero .actions{margin-top:28px}
+    /* Quick links under the video */
+    .quick-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:1px solid var(--line)}
+    .quick-links a{display:flex;align-items:center;gap:12px;min-height:60px;padding:0 20px;background:var(--white);color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-top:1px solid var(--line)}
+    .quick-links a:nth-child(odd){border-right:1px solid var(--line)}
+    .quick-links svg{flex-shrink:0;color:var(--green-mid)}
+    .quick-links a.primary{background:var(--yellow);border-color:var(--yellow)}
+    .quick-links a.primary svg{color:var(--ink)}
+    /* Lighter sticky bar */
+    .mobile-book .btn-line{border-color:var(--line)}
+  }
+
+  @media (max-width:1240px){
+    /* Only one logo at the top: hide the header logo while the big video logo is showing */
+    header:not(.scrolled):not(.menu-open) .logo{opacity:0;pointer-events:none}
+    .logo{transition:opacity .35s ease}
+  }
+  @media (max-width:720px){
+    section.pad{padding:72px 0}
+    .loyalty{padding:64px 0}
+    .carousel-nav{display:none}
+    .cards{margin-top:32px;grid-auto-columns:82%}
+    .hero .actions{flex-direction:column;align-items:stretch;width:100%;max-width:300px}
+    .split{gap:40px}
+    .weddings{margin-top:72px}
+    .photo-break{height:52vh;min-height:320px}
+    .break-caption{bottom:28px}
+    .biz-grid, .cards, .dish-list{margin-top:32px}
+    .framed{outline-offset:8px;margin:10px}
+    footer{padding-top:56px}
+  }
 </style>
 </head>
 <body>
@@ -728,7 +751,12 @@
   // Sticky booking bar on mobile, shown once you scroll past the video
   const mobileBook = document.querySelector('.mobile-book');
   const heroEl = document.querySelector('.hero');
-  const setBook = () => mobileBook.classList.toggle('show', window.scrollY > heroEl.offsetHeight * 0.8);
+  const quick = document.querySelector('.quick-links');
+  const setBook = () => {
+    const quickVisible = quick && quick.offsetParent !== null;
+    const past = quickVisible ? quick.getBoundingClientRect().bottom < 0 : window.scrollY > heroEl.offsetHeight * 0.8;
+    mobileBook.classList.toggle('show', past);
+  };
   setBook(); window.addEventListener('scroll', setBook, { passive: true });
 
   // Years open (since 1998), updates itself every year
