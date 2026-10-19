@@ -107,6 +107,8 @@
   .nav-extra{display:none}
   .mobile-book{display:none}
   @media (max-width:1240px){.mobile-book{display:flex}}
+  /* No menu animations while the window is being resized */
+  .resizing nav, .resizing nav li{transition:none !important}
   .menu-toggle .i-close{display:none}
   .menu-toggle[aria-expanded="true"] .i-open{display:none}
   .menu-toggle[aria-expanded="true"] .i-close{display:block}
@@ -673,7 +675,13 @@
   toggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); toggle.focus(); } });
-  window.addEventListener('resize', () => { if (innerWidth > 1240) setMenu(false); });
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    document.documentElement.classList.add('resizing');
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => document.documentElement.classList.remove('resizing'), 300);
+    if (innerWidth > 1240) setMenu(false);
+  });
 
   // Sticky booking bar on mobile, shown once you scroll past the video
   const mobileBook = document.querySelector('.mobile-book');
