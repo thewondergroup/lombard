@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Our Story | 1 Lombard Street</title>
+<meta name="description" content="The story of 1 Lombard Street: a Grade II listed banking hall at Bank, Head Chef James Holden and the producers behind the menu.">
+<meta name="theme-color" content="#15302A">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* ---------- Producers journey ---------- */
+  .producers-j{background:var(--stone);padding:clamp(110px,13vw,170px) 0 clamp(60px,8vw,110px)}
+  .prod-head .label{color:var(--muted)}
+  .prod-head h2{font-size:clamp(40px,4.8vw,70px);margin-top:22px;max-width:820px}
+  .prod-head .lede{margin-top:24px;font-size:18px;line-height:1.7;color:var(--body);max-width:560px}
+  .journey{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(40px,5vw,90px);margin-top:20px}
+  .journey-steps{grid-column:1;grid-row:1}
+  .journey-map{grid-column:2;grid-row:1;position:sticky;top:var(--head);height:calc(100vh - var(--head));display:flex;align-items:center;justify-content:center}
+  .map-frame{position:relative;height:calc(100% - 48px);aspect-ratio:712/944;max-width:100%;overflow:hidden}
+  .map-inner{position:absolute;inset:0;transform-origin:0 0;transition:transform 1.4s cubic-bezier(.65,0,.25,1);will-change:transform}
+  .map-inner img{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;pointer-events:none}
+  .jhl{position:absolute;width:var(--hw,10%);aspect-ratio:1;transition:width 1.4s cubic-bezier(.65,0,.25,1);border-radius:50%;transform:translate(-50%,-50%);z-index:0;cursor:pointer}
+  .jhl::before{content:"";position:absolute;inset:6%;border-radius:50%;border:1.5px solid var(--yellow);opacity:0;transform:scale(.85);transition:opacity .3s ease,transform .4s cubic-bezier(.2,.7,.2,1)}
+  .jhl.on:hover::before{opacity:1;transform:none}
+  .jhl i{display:none}
+  /* Spotlight: the rest of the map fades back, the active region stays in full ink */
+  .map-art{transition:opacity .9s ease}
+  .journey.focus .map-art:not(.map-focus){opacity:.14}
+  .map-focus{opacity:0;transition:opacity .7s ease}
+  .journey.focus .map-focus.show{opacity:1}
+  .map-tip{position:absolute;z-index:5;left:0;top:0;transform:translate(-50%,-100%);white-space:nowrap;font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:9px 12px;opacity:0;pointer-events:none;transition:opacity .2s ease}
+  .map-tip.on{opacity:1}
+  .step{min-height:92vh;display:flex;align-items:center}
+  .step:first-child{min-height:70vh;align-items:flex-start;padding-top:12vh}
+  .step:last-child{min-height:80vh}
+  .step-card{max-width:440px;opacity:.22;transform:translateY(16px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .step.active .step-card{opacity:1;transform:none}
+  .step-n{display:block;font-size:12px;font-weight:500;letter-spacing:.24em;color:var(--muted)}
+  .step-n em{font-style:normal;color:var(--yellow);margin:0 4px}
+  .step h3{font-size:clamp(36px,3.4vw,52px);margin-top:16px}
+  .step p{margin-top:16px;font-size:17px;line-height:1.65;color:var(--body)}
+  .step ul{list-style:none;margin:26px 0 0;padding:20px 0 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 0}
+  .step li{font-family:var(--serif);font-size:19px;line-height:1.3;color:var(--ink)}
+  .step li:not(:last-child)::after{content:"·";margin:0 10px;color:var(--yellow)}
+  .step .link{margin-top:30px}
+
+
+@media (max-width:1000px){.journey{grid-template-columns:minmax(0,1fr);gap:0;margin-top:36px}.journey-map{grid-column:1;grid-row:1;z-index:4;height:52vh;background:var(--stone);margin:0 calc(-1 * var(--gutter));box-shadow:0 1px 0 var(--line)}.map-frame{height:calc(100% - 20px)}.journey-steps{grid-row:2}.step,.step:first-child,.step:last-child{min-height:62vh;align-items:flex-start;padding-top:44px}.step-card{max-width:none}}
+@media (max-width:700px){.prod-head .lede{font-size:17px}.journey-map{height:46vh}.step,.step:first-child,.step:last-child{min-height:50vh;padding-top:36px}.step h3{font-size:34px}.step li{font-size:17px}}
+
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="overlay"><span class="bars" aria-hidden="true"></span><span class="word">Menu</span></button>
+    <a class="head-logo" href="./" aria-label="1 Lombard Street, home">
+      <img class="white" src="assets/img/logo-white.png" alt="">
+      <img class="dark" src="assets/img/logo-dark.png" alt="">
+    </a>
+    <a class="btn btn-yellow head-book" href="https://www.sevenrooms.com/reservations/1lombardstreet"><span class="long">Book a table</span><span class="short">Book</span></a>
+  </div>
+</header>
+
+<div class="overlay" id="overlay" aria-hidden="true">
+  <div class="wrap">
+    <div class="overlay-main">
+      <nav aria-label="Main">
+        <ul>
+        <li><a href="menus.html" data-photo="0">Menus</a></li>
+        <li><a href="whats-on.html" data-photo="1">What's on</a></li>
+        <li><a href="private-dining.html" data-photo="2">Private dining</a></li>
+        <li><a href="weddings.html" data-photo="3">Weddings</a></li>
+        <li><a href="our-story.html" data-photo="4">Our story</a></li>
+        <li><a href="gift-cards.html" data-photo="5">Gift cards</a></li>
+        <li><a href="https://www.goosebox.co.uk/" data-photo="6">Goosebox catering</a></li>
+        <li><a href="visit.html" data-photo="7">Visit us</a></li>
+        </ul>
+      </nav>
+      <div class="overlay-info">
+        <div><span class="label">Hours</span>Mon to Fri, 7am to 11pm<br>Saturday brunch, 12pm to 5pm<br>Sunday lunch, 12pm to 6pm</div>
+        <div><span class="label">Find us</span>1 Lombard Street<br>London EC3V 9AA<br>Opposite Bank station</div>
+        <div><span class="label">Contact</span><a href="tel:+442079296611">020 7929 6611</a><br><a href="mailto:reception@1lombardstreet.com">reception@1lombardstreet.com</a></div>
+        <a class="btn btn-yellow" href="https://www.sevenrooms.com/reservations/1lombardstreet">Book a table</a>
+      </div>
+    </div>
+    <div class="overlay-photos" aria-hidden="true">
+      <img data-src="https://static.wixstatic.com/media/871172_dfb3bed4d3b846d98de54ac19f1e0749~mv2.jpg/v1/fill/w_1000,h_1250,al_c,q_85,enc_auto/menu-0.jpg" alt="">
+      <img data-src="https://static.wixstatic.com/media/002d73_6eb05cedb3bf4548b481f08ae6bc4266~mv2.jpg/v1/fill/w_1000,h_1250,al_c,q_85,enc_auto/menu-1.jpg" alt="">
+      <img data-src="https://static.wixstatic.com/media/002d73_08a86dc5074b4b7184496d67df2fed9a~mv2.jpeg/v1/fill/w_1000,h_1250,al_c,q_85,enc_auto/menu-2.jpg" alt="">
+      <img data-src="https://static.wixstatic.com/media/002d73_74d5702b8e644a599ed663b1ad1fa9cc~mv2.jpeg/v1/fill/w_1000,h_1250,al_c,q_85,enc_auto/menu-3.jpg" alt="">
+      <img data-src="https://static.wixstatic.com/media/002d73_2575e32349134911a896b1ba6e9cbf6f~mv2.png/v1/fill/w_1000,h_1250,al_c,q_85,enc_auto/menu-4.jpg" alt="">
+      <img data-src="https://static.wixstatic.com/media/629cd6_8760e407148347709ab57d6f724cccb5~mv2.jpg/v1/fill/w_1000,h_1250,al_c,q_85,enc_auto/menu-5.jpg" alt="">
+      <img data-src="https://static.wixstatic.com/media/bc6bf3_cade3310dcc9481aae07eca1fd691533~mv2.jpg/v1/fill/w_1000,h_1250,al_c,q_85,enc_auto/menu-6.jpg" alt="">
+      <img data-src="https://static.wixstatic.com/media/002d73_846800af765d46319f0b3ed40ed32ff0f000.jpg/v1/fill/w_1000,h_1250,al_c,q_85,enc_auto/menu-7.jpg" alt="">
+      <img data-src="https://static.wixstatic.com/media/002d73_b36a84e000a54dd9845e828057917db7~mv2.jpg/v1/fill/w_1000,h_1250,al_c,q_85,enc_auto/menu-default.jpg" alt="" class="is-on">
+    </div>
+  </div>
+</div>
+
+<main id="top">
+  <section class="page-hero">
+    <img src="https://static.wixstatic.com/media/002d73_b36a84e000a54dd9845e828057917db7~mv2.jpg/v1/fill/w_2000,h_1200,al_c,q_85,enc_auto/hero.jpg" alt="">
+    <div class="wrap">
+      <p class="label label-rule">Our story</p>
+      <h1>The City's dining room</h1>
+      <p class="sub">A Grade II listed banking hall at Bank, and a kitchen built on British produce.</p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap split2">
+      <div class="reveal">
+        <p class="label label-rule">The building</p>
+        <h2 class="h2">Once a banking hall</h2>
+        <div class="prose">
+          <p>1 Lombard Street sits at the very heart of the Square Mile, on the corner of Bank junction. The dining room is a Grade II listed former banking hall, crowned by a glass cupola that fills the room with light.</p>
+          <p>Since 1998 the City has gathered here for breakfast meetings, long lunches and late dinners, from deal-closing lunches to wedding parties.</p>
+        </div>
+        <div class="stats"><div><b class="years">28</b><span>Years at Bank</span></div><div><b>II</b><span>Grade listed</span></div><div><b>1998</b><span>Opened</span></div></div>
+      </div>
+      <div class="img reveal"><img src="https://static.wixstatic.com/media/002d73_383456502f2b4370b32436e46c7b4134~mv2.jpeg/v1/fill/w_1200,h_1500,al_c,q_85,enc_auto/building.jpg" alt="The dome bar" loading="lazy"></div>
+    </div>
+  </section>
+  <section class="sec green">
+    <div class="wrap split2 flip">
+      <div class="reveal">
+        <p class="label label-rule">The kitchen</p>
+        <h2 class="h2">Head Chef James Holden</h2>
+        <div class="prose">
+          <p>James's menus celebrate the seasons: fish from British shores, fruit and vegetables from local growers, and meat from small, award-winning producers.</p>
+          <p>Dishes are simply served and honestly sourced, from Peter Hannan's salt-aged beef to Clarence Court eggs and Neal's Yard cheeses.</p>
+        </div>
+        <p class="quote" style="margin-top:34px;font-size:clamp(28px,3vw,42px)">“We focus on the quality and backstory of our ingredients just as much as how we cook them.”</p>
+      </div>
+      <div class="img reveal"><img src="https://static.wixstatic.com/media/002d73_2575e32349134911a896b1ba6e9cbf6f~mv2.png/v1/fill/w_1200,h_1500,al_c,q_85,enc_auto/chef.jpg" alt="Head Chef James Holden" loading="lazy"></div>
+    </div>
+  </section>
+  <!-- Producers journey -->
+  <section class="producers-j" id="producers">
+    <div class="wrap prod-head">
+      <p class="label label-rule reveal">Our producers</p>
+      <h2 class="reveal">The best of the British Isles, on every plate</h2>
+      <p class="lede reveal">Every dish starts with a name we know. Scroll the map to meet the 52 farms, fisheries, dairies and distilleries behind the menu.</p>
+    </div>
+    <div class="wrap journey">
+      <div class="journey-map">
+        <div class="map-frame">
+          <div class="map-inner">
+            <img class="map-art" src="images/producers-art.webp" alt="Illustrated map of the British Isles showing where 1 Lombard Street sources its produce" width="2801" height="3713" loading="lazy">
+            <img class="map-art map-focus" src="images/producers-art.webp" alt="" aria-hidden="true" width="2801" height="3713" loading="lazy">
+            <img class="map-coast" src="images/producers-coast.svg" alt="" aria-hidden="true" loading="lazy">
+            <span class="jhl" data-r="1" style="left:53.16%;top:14.62%" data-ix="49.81" data-iy="13.88"><i>Dalmore Whisky</i></span>
+            <span class="jhl" data-r="1" style="left:57.09%;top:24.05%" data-ix="53.42" data-iy="24.24"><i>Highland Venison</i></span>
+            <span class="jhl" data-r="1" style="left:44.17%;top:24.42%" data-ix="43.89" data-iy="24.14"><i>Chanterelles</i></span>
+            <span class="jhl" data-r="1" style="left:27.46%;top:25.16%" data-ix="27.71" data-iy="23.29"><i>Scallops</i></span>
+            <span class="jhl" data-r="1" style="left:20.72%;top:32.36%" data-ix="20.07" data-iy="29.87"><i>Native Lobster</i></span>
+            <span class="jhl" data-r="1" style="left:47.47%;top:30.67%" data-ix="47.63" data-iy="28.44"><i>Loch Duart Salmon</i></span>
+            <span class="jhl" data-r="1" style="left:50.28%;top:38.51%" data-ix="49.94" data-iy="36.50"><i>Haggis</i></span>
+            <span class="jhl" data-r="2" style="left:22.54%;top:52.65%" data-ix="27.09" data-iy="48.29"><i>Peter Hannan salt-aged beef</i></span>
+            <span class="jhl" data-r="2" style="left:37.15%;top:55.77%" data-ix="37.29" data-iy="54.73"><i>Carlingford Oysters</i></span>
+            <span class="jhl" data-r="2" style="left:37.29%;top:62.13%" data-ix="37.27" data-iy="60.11"><i>Dublin Bay Prawns</i></span>
+            <span class="jhl" data-r="2" style="left:49.72%;top:50.90%" data-ix="49.54" data-iy="50.02"><i>Manx Kippers</i></span>
+            <span class="jhl" data-r="2" style="left:51.90%;top:57.26%" data-ix="51.79" data-iy="54.82"><i>Morecambe Bay Shrimp</i></span>
+            <span class="jhl" data-r="3" style="left:77.67%;top:41.15%" data-ix="76.98" data-iy="39.13"><i>Haddock</i></span>
+            <span class="jhl" data-r="3" style="left:66.50%;top:48.31%" data-ix="63.63" data-iy="46.85"><i>Yorkshire Pheasant</i></span>
+            <span class="jhl" data-r="3" style="left:63.27%;top:54.24%" data-ix="62.98" data-iy="53.10"><i>Yorkshire Grouse</i></span>
+            <span class="jhl" data-r="3" style="left:72.82%;top:56.94%" data-ix="72.18" data-iy="55.86"><i>Yorkshire Rhubarb</i></span>
+            <span class="jhl" data-r="3" style="left:62.01%;top:59.75%" data-ix="62.58" data-iy="57.77"><i>Mrs Kirkham&#x27;s Lancashire</i></span>
+            <span class="jhl" data-r="3" style="left:70.79%;top:61.49%" data-ix="70.89" data-iy="61.28"><i>Lincolnshire Poacher</i></span>
+            <span class="jhl" data-r="3" style="left:78.79%;top:61.23%" data-ix="77.50" data-iy="59.49"><i>Lincolnshire White Onions</i></span>
+            <span class="jhl" data-r="3" style="left:71.21%;top:66.84%" data-ix="72.00" data-iy="65.10"><i>Colston Bassett Stilton</i></span>
+            <span class="jhl" data-r="4" style="left:53.30%;top:67.69%" data-ix="53.53" data-iy="65.49"><i>Welsh Lamb</i></span>
+            <span class="jhl" data-r="4" style="left:61.59%;top:70.71%" data-ix="60.53" data-iy="69.38"><i>Asparagus</i></span>
+            <span class="jhl" data-r="4" style="left:57.72%;top:75.64%" data-ix="54.31" data-iy="75.37"><i>Severn &amp; Wye Smoked Salmon</i></span>
+            <span class="jhl" data-r="4" style="left:68.05%;top:74.31%" data-ix="68.27" data-iy="72.82"><i>Clarence Court Eggs</i></span>
+            <span class="jhl" data-r="4" style="left:60.60%;top:80.93%" data-ix="61.03" data-iy="81.02"><i>Glastonbury Whey Butter</i></span>
+            <span class="jhl" data-r="4" style="left:59.97%;top:85.28%" data-ix="59.23" data-iy="85.54"><i>Ogleshield</i></span>
+            <span class="jhl" data-r="4" style="left:67.49%;top:84.22%" data-ix="64.87" data-iy="84.32"><i>Somerset Cider Brandy</i></span>
+            <span class="jhl" data-r="5" style="left:42.06%;top:82.79%" data-ix="41.93" data-iy="81.18"><i>Devon Crab</i></span>
+            <span class="jhl" data-r="5" style="left:47.96%;top:87.02%" data-ix="49.50" data-iy="85.27"><i>Devonshire Duck</i></span>
+            <span class="jhl" data-r="5" style="left:54.42%;top:85.75%" data-ix="54.10" data-iy="85.21"><i>Lyme Bay</i></span>
+            <span class="jhl" data-r="5" style="left:36.38%;top:88.51%" data-ix="35.95" data-iy="86.66"><i>Sea Vegetables</i></span>
+            <span class="jhl" data-r="5" style="left:57.23%;top:91.53%" data-ix="56.06" data-iy="90.73"><i>Torbay Cod</i></span>
+            <span class="jhl" data-r="5" style="left:46.42%;top:93.96%" data-ix="48.32" data-iy="92.01"><i>Poole Bay Clams</i></span>
+            <span class="jhl" data-r="5" style="left:52.74%;top:94.54%" data-ix="53.14" data-iy="93.04"><i>Dorset Scallops</i></span>
+            <span class="jhl" data-r="5" style="left:25.63%;top:92.74%" data-ix="25.92" data-iy="90.10"><i>Cornish Lobster</i></span>
+            <span class="jhl" data-r="5" style="left:36.87%;top:97.19%" data-ix="37.01" data-iy="95.48"><i>Cornish Mackerel</i></span>
+            <span class="jhl" data-r="5" style="left:6.95%;top:96.13%" data-ix="7.45" data-iy="93.87"><i>Jersey Royal Potatoes</i></span>
+            <span class="jhl" data-r="6" style="left:87.92%;top:64.94%" data-ix="89.47" data-iy="64.77"><i>Hodmedod&#x27;s Pulses &amp; Grains</i></span>
+            <span class="jhl" data-r="6" style="left:89.19%;top:70.07%" data-ix="88.51" data-iy="70.30"><i>Dingley Dell Pork</i></span>
+            <span class="jhl" data-r="6" style="left:78.58%;top:71.03%" data-ix="78.49" data-iy="69.71"><i>Suffolk Venison</i></span>
+            <span class="jhl" data-r="6" style="left:84.41%;top:73.46%" data-ix="85.61" data-iy="72.87"><i>Baron Bigod</i></span>
+            <span class="jhl" data-r="6" style="left:77.04%;top:75.95%" data-ix="77.24" data-iy="76.07"><i>La Latteria Burrata</i></span>
+            <span class="jhl" data-r="6" style="left:94.17%;top:75.79%" data-ix="91.00" data-iy="75.86"><i>Maldon Oysters</i></span>
+            <span class="jhl" data-r="6" style="left:83.15%;top:79.66%" data-ix="82.32" data-iy="78.96"><i>Bermondsey Oyster Mushrooms</i></span>
+            <span class="jhl" data-r="6" style="left:88.55%;top:81.30%" data-ix="89.02" data-iy="80.27"><i>Kentish Cherries</i></span>
+            <span class="jhl" data-r="6" style="left:83.85%;top:83.74%" data-ix="83.82" data-iy="83.83"><i>Berries</i></span>
+            <span class="jhl" data-r="6" style="left:74.02%;top:80.08%" data-ix="74.76" data-iy="79.07"><i>Chalk Stream Trout</i></span>
+            <span class="jhl" data-r="6" style="left:69.03%;top:81.36%" data-ix="68.19" data-iy="79.69"><i>Hampshire Watercress</i></span>
+            <span class="jhl" data-r="6" style="left:80.90%;top:85.81%" data-ix="78.94" data-iy="84.76"><i>Exton Park Sparkling</i></span>
+            <span class="jhl" data-r="6" style="left:76.76%;top:89.72%" data-ix="76.39" data-iy="87.60"><i>Isle of Wight Tomatoes</i></span>
+            <span class="jhl" data-r="6" style="left:69.03%;top:90.84%" data-ix="69.06" data-iy="88.97"><i>Mermaid Gin</i></span>
+            <span class="jhl" data-r="6" style="left:90.87%;top:87.76%" data-ix="89.93" data-iy="85.92"><i>Dover Sole</i></span>
+          </div>
+          <div class="map-tip" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="journey-steps">
+        <div class="step" data-r="1" data-x="38.9" data-y="26.56" data-s="1.7">
+          <div class="step-card">
+            <span class="step-n">01 <em>/</em> 07</span>
+            <h3>The Highlands &amp; Islands</h3>
+            <p>Wild venison, Loch Duart salmon, west coast shellfish and a dram of Dalmore.</p>
+            <ul><li>Dalmore Whisky</li><li>Highland Venison</li><li>Chanterelles</li><li>Scallops</li><li>Native Lobster</li><li>Loch Duart Salmon</li><li>Haggis</li></ul>
+          </div>
+        </div>
+        <div class="step" data-r="2" data-x="37.22" data-y="56.51" data-s="2.11">
+          <div class="step-card">
+            <span class="step-n">02 <em>/</em> 07</span>
+            <h3>Ireland &amp; the Irish Sea</h3>
+            <p>Peter Hannan's salt-aged beef, Carlingford oysters, Dublin Bay prawns and Morecambe Bay shrimp.</p>
+            <ul><li>Peter Hannan salt-aged beef</li><li>Carlingford Oysters</li><li>Dublin Bay Prawns</li><li>Manx Kippers</li><li>Morecambe Bay Shrimp</li></ul>
+          </div>
+        </div>
+        <div class="step" data-r="3" data-x="70.4" data-y="54.0" data-s="1.83">
+          <div class="step-card">
+            <span class="step-n">03 <em>/</em> 07</span>
+            <h3>The North &amp; the Shires</h3>
+            <p>Yorkshire game and rhubarb, Lincolnshire onions and the great farmhouse cheeses.</p>
+            <ul><li>Haddock</li><li>Yorkshire Pheasant</li><li>Yorkshire Grouse</li><li>Yorkshire Rhubarb</li><li>Mrs Kirkham&#x27;s Lancashire</li><li>Lincolnshire Poacher</li><li>Lincolnshire White Onions</li><li>Colston Bassett Stilton</li></ul>
+          </div>
+        </div>
+        <div class="step" data-r="4" data-x="60.67" data-y="76.48" data-s="2.6">
+          <div class="step-card">
+            <span class="step-n">04 <em>/</em> 07</span>
+            <h3>Wales &amp; the West</h3>
+            <p>Welsh lamb, Severn &amp; Wye smoked salmon, Somerset cider brandy and Glastonbury butter.</p>
+            <ul><li>Welsh Lamb</li><li>Asparagus</li><li>Severn &amp; Wye Smoked Salmon</li><li>Clarence Court Eggs</li><li>Glastonbury Whey Butter</li><li>Ogleshield</li><li>Somerset Cider Brandy</li></ul>
+          </div>
+        </div>
+        <div class="step" data-r="5" data-x="32.09" data-y="89.99" data-s="1.5">
+          <div class="step-card">
+            <span class="step-n">05 <em>/</em> 07</span>
+            <h3>The South West coast</h3>
+            <p>Devon crab, Cornish mackerel, Torbay cod and Jersey Royals, landed along the coast.</p>
+            <ul><li>Devon Crab</li><li>Devonshire Duck</li><li>Lyme Bay</li><li>Sea Vegetables</li><li>Torbay Cod</li><li>Poole Bay Clams</li><li>Dorset Scallops</li><li>Cornish Lobster</li><li>Cornish Mackerel</li><li>Jersey Royal Potatoes</li></ul>
+          </div>
+        </div>
+        <div class="step" data-r="6" data-x="81.6" data-y="77.89" data-s="1.81">
+          <div class="step-card">
+            <span class="step-n">06 <em>/</em> 07</span>
+            <h3>London &amp; the South East</h3>
+            <p>Maldon oysters, Dover sole, Kentish cherries and mushrooms grown in Bermondsey.</p>
+            <ul><li>Hodmedod&#x27;s Pulses &amp; Grains</li><li>Dingley Dell Pork</li><li>Suffolk Venison</li><li>Baron Bigod</li><li>La Latteria Burrata</li><li>Maldon Oysters</li><li>Bermondsey Oyster Mushrooms</li><li>Kentish Cherries</li><li>Berries</li><li>Chalk Stream Trout</li><li>Hampshire Watercress</li><li>Exton Park Sparkling</li><li>Isle of Wight Tomatoes</li><li>Mermaid Gin</li><li>Dover Sole</li></ul>
+          </div>
+        </div>
+        <div class="step" data-r="all" data-x="50" data-y="50" data-s="1">
+          <div class="step-card">
+            <span class="step-n">07 <em>/</em> 07</span>
+            <h3>52 producers. One dining room.</h3>
+            <p>Every season the menu follows them, which is why it never stands still.</p>
+            <a class="link" href="#menus">See the menus <svg class="arrow" viewBox="0 0 22 10" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M0 5h21M16 1l5 4-5 4"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="sec stone">
+    <div class="wrap split2">
+      <div class="img reveal land"><img src="https://static.wixstatic.com/media/bc6bf3_cade3310dcc9481aae07eca1fd691533~mv2.jpg/v1/fill/w_1400,h_1050,al_c,q_85,enc_auto/goosebox.jpg" alt="Goosebox catering" loading="lazy"></div>
+      <div class="reveal">
+        <p class="label label-rule">Beyond the dining room</p>
+        <h2 class="h2">Goosebox</h2>
+        <div class="prose"><p>Born at 1 Lombard Street, Goosebox brings the same seasonal cooking and polished service to offices, launches and celebrations across London.</p>
+        <div class="actions"><a class="btn btn-yellow" href="https://www.goosebox.co.uk/">Visit Goosebox</a></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="wrap">
+      <h2 class="reveal">Come and see for yourself</h2>
+      <p class="reveal">Breakfast from 7am, lunch, dinner, Saturday brunch and Sunday lunch.</p>
+      <div class="actions reveal"><a class="btn btn-yellow" href="https://www.sevenrooms.com/reservations/1lombardstreet">Book a table</a><a class="btn btn-line" href="menus.html">View menus</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <img class="foot-logo" src="assets/img/logo-white.png" alt="1 Lombard Street">
+    <div class="newsletter">
+      <p>News from the hall: seasonal menus, events and first dibs on Christmas.</p>
+      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thank you';">
+        <label for="nl">Email address</label>
+        <input id="nl" type="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="foot-links">
+      <a href="menus.html">Menus</a>
+      <a href="whats-on.html">What's on</a>
+      <a href="private-dining.html">Private dining</a>
+      <a href="weddings.html">Weddings</a>
+      <a href="our-story.html">Our story</a>
+      <a href="visit.html">Visit</a>
+    </div>
+    <div class="foot-links foot-links-2">
+      <a href="loyalty.html">Loyalty club</a>
+      <a href="gift-cards.html">Gift cards</a>
+      <a href="https://www.goosebox.co.uk/">Goosebox</a>
+      <a href="https://www.1lombardstreet.com/blog">Journal</a>
+      <a href="visit.html#careers">Careers</a>
+      <a href="https://www.instagram.com/1lombardstreet/">Instagram</a>
+      <a href="https://uk.linkedin.com/company/1lombardstreet">LinkedIn</a>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 1 Lombard Street · <span style="opacity:.55">Preview v13 · full site</span></span>
+      <span><a href="https://www.1lombardstreet.com/modern-slavery-policy">Modern Slavery Policy</a><a href="https://www.1lombardstreet.com/_files/ugd/002d73_02b7babd20574388ac3f015094dfc4c3.pdf">Tipping Policy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+  // Producers journey: sticky map zooms region by region as you scroll
+  (function () {
+    const frame = document.querySelector('.map-frame'), inner = document.querySelector('.map-inner');
+    const steps = [...document.querySelectorAll('.step')], spots = [...document.querySelectorAll('.jhl')];
+    if (!frame || !steps.length) return;
+    let current = null;
+    const go = step => {
+      if (step === current) return; current = step;
+      steps.forEach(s => s.classList.toggle('active', s === step));
+      const r = step.dataset.r;
+      spots.forEach(h => h.classList.toggle('on', r === 'all' || h.dataset.r === r));
+      place(); spotlight();
+    };
+    const journey = document.querySelector('.journey'), focusImg = document.querySelector('.map-focus');
+    let ft;
+    const spotlight = () => {
+      if (!current || !focusImg) return;
+      const all = current.dataset.r === 'all';
+      journey.classList.toggle('focus', !all);
+      focusImg.classList.remove('show'); clearTimeout(ft);
+      if (all) return;
+      const R = Math.round(inner.clientWidth * 0.062), r2 = Math.round(R * .8);
+      const m = spots.filter(h => h.classList.contains('on')).map(h =>
+        'radial-gradient(circle ' + R + 'px at ' + h.dataset.ix + '% ' + h.dataset.iy + '%, #000 55%, transparent 100%),' +
+        'radial-gradient(circle ' + r2 + 'px at ' + h.style.left + ' ' + h.style.top + ', #000 55%, transparent 100%)').join(',');
+      ft = setTimeout(() => { focusImg.style.webkitMaskImage = m; focusImg.style.maskImage = m; focusImg.classList.add('show'); }, 260);
+    };
+    const place = () => {
+      if (!current) return;
+      const fw = frame.clientWidth, fh = frame.clientHeight;
+      const sc = +current.dataset.s, cx = +current.dataset.x / 100, cy = +current.dataset.y / 100;
+      let tx = fw / 2 - cx * fw * sc, ty = fh / 2 - cy * fh * sc;
+      tx = Math.min(0, Math.max(fw - fw * sc, tx)); ty = Math.min(0, Math.max(fh - fh * sc, ty));
+      inner.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + sc + ')';
+      inner.style.setProperty('--hw', (10 / Math.pow(sc, .7)) + '%');
+      inner.style.setProperty('--inv', 1 / sc);
+    };
+    const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) go(e.target); }); }, { rootMargin: '-45% 0px -45% 0px' });
+    steps.forEach(s => io.observe(s));
+    const tip = document.querySelector('.map-tip');
+    spots.forEach(h => {
+      h.addEventListener('mouseenter', () => {
+        if (!h.classList.contains('on')) return;
+        const f = frame.getBoundingClientRect(), r = h.getBoundingClientRect();
+        tip.textContent = h.querySelector('i').textContent;
+        tip.style.left = (r.left + r.width / 2 - f.left) + 'px'; tip.style.top = (r.top + r.height * .22 - f.top) + 'px';
+        tip.classList.add('on');
+      });
+      h.addEventListener('mouseleave', () => tip.classList.remove('on'));
+    });
+    addEventListener('resize', () => { place(); spotlight(); });
+    go(steps[0]);
+  })();
+
+
+</script>
+</body>
+</html>

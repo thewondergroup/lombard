@@ -1,10 +1,27 @@
-# 1 Lombard Street — homepage redesign (test site)
+# 1 Lombard Street — website redesign (test site)
 
-Static homepage redesign for 1 Lombard Street, by The Wonder Agency.
-Served with GitHub Pages for review only — it is set to `noindex` so search engines ignore it.
+Static redesign of the 1 Lombard Street website, by The Wonder Agency.
+It is hosted on GitHub Pages for review only and set to `noindex`, so search engines ignore it. The live Wix site is untouched.
 
-- `index.html`: the current design (v2), with the animated producers map
-- `v1.html`: the previous design, kept for comparison
-- `producers-map.html`: the animated producers map on its own page
-- `producers-journey.html`: homepage version with the scrolling map journey (for a future About page)
-- Photos and the hero video currently load from the live Wix site. Before launch, download them into an `images/` folder and update the links.
+## Pages
+- `index.html`: homepage, with the animated producers map
+- `menus.html`: every menu on one page with sticky tabs (breakfast, à la carte, vegetarian, desserts, brunch, Sunday lunch, drinks)
+- `whats-on.html`: events and offers
+- `fridays.html`, `bottomless-brunch.html`, `sunday-lunch.html`, `christmas.html`: individual experiences
+- `private-dining.html`, `weddings.html`: spaces and enquiry forms
+- `our-story.html`: the history, Head Chef and the scrolling producers map journey
+- `gift-cards.html`, `loyalty.html`
+- `visit.html`: directions, hours, contact and careers
+- `404.html`
+
+## Shared files
+- `assets/site.css`, `assets/site.js`, `assets/img/`: shared styles, script, logos and favicon
+- `images/`: producers map artwork and animation sprites
+
+## Older versions, kept for reference
+- `v1.html`: the first design
+- `producers-map.html`: the animated map on its own
+- `producers-journey.html`: the scrolling map journey on its own
+
+## Before launch
+Photos and the hero video currently load from the live Wix site. Download them into `images/` and update the links.
