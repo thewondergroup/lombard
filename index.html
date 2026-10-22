@@ -279,13 +279,16 @@
   .map-inner{position:absolute;inset:0;transform-origin:0 0;transition:transform 1.4s cubic-bezier(.65,0,.25,1);will-change:transform}
   .map-inner img{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;pointer-events:none}
   .hl{position:absolute;width:var(--hw,10%);aspect-ratio:1;transition:width 1.4s cubic-bezier(.65,0,.25,1);border-radius:50%;transform:translate(-50%,-50%);z-index:0;cursor:pointer}
-  .hl::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(242,194,48,.95) 0%,rgba(242,194,48,.7) 36%,rgba(242,194,48,0) 70%);opacity:0;transform:scale(.3);transition:opacity .6s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
-  .hl.on::before{opacity:1;transform:scale(1);animation:breathe 3.2s ease-in-out infinite}
+  .hl::before{content:"";position:absolute;inset:6%;border-radius:50%;border:1.5px solid var(--yellow);opacity:0;transform:scale(.85);transition:opacity .3s ease,transform .4s cubic-bezier(.2,.7,.2,1)}
+  .hl.on:hover::before{opacity:1;transform:none}
   .hl i{display:none}
-  .hl.on:hover::before{transform:scale(1.35);animation:none}
+  /* Spotlight: the rest of the map fades back, the active region stays in full ink */
+  .map-art{transition:opacity .9s ease}
+  .journey.focus .map-art:not(.map-focus){opacity:.14}
+  .map-focus{opacity:0;transition:opacity .7s ease}
+  .journey.focus .map-focus.show{opacity:1}
   .map-tip{position:absolute;z-index:5;left:0;top:0;transform:translate(-50%,-100%);white-space:nowrap;font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:9px 12px;opacity:0;pointer-events:none;transition:opacity .2s ease}
   .map-tip.on{opacity:1}
-  @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
   .step{min-height:92vh;display:flex;align-items:center}
   .step:first-child{min-height:70vh;align-items:flex-start;padding-top:12vh}
   .step:last-child{min-height:80vh}
@@ -612,59 +615,60 @@
         <div class="map-frame">
           <div class="map-inner">
             <img class="map-art" src="images/producers-art.webp" alt="Illustrated map of the British Isles showing where 1 Lombard Street sources its produce" width="2801" height="3713" loading="lazy">
+            <img class="map-art map-focus" src="images/producers-art.webp" alt="" aria-hidden="true" width="2801" height="3713" loading="lazy">
             <img class="map-coast" src="images/producers-coast.svg" alt="" aria-hidden="true" loading="lazy">
-            <span class="hl" data-r="1" style="left:53.16%;top:14.62%"><i>Dalmore Whisky</i></span>
-            <span class="hl" data-r="1" style="left:57.09%;top:24.05%"><i>Highland Venison</i></span>
-            <span class="hl" data-r="1" style="left:44.17%;top:24.42%"><i>Chanterelles</i></span>
-            <span class="hl" data-r="1" style="left:27.46%;top:25.16%"><i>Scallops</i></span>
-            <span class="hl" data-r="1" style="left:20.72%;top:32.36%"><i>Native Lobster</i></span>
-            <span class="hl" data-r="1" style="left:47.47%;top:30.67%"><i>Loch Duart Salmon</i></span>
-            <span class="hl" data-r="1" style="left:50.28%;top:38.51%"><i>Haggis</i></span>
-            <span class="hl" data-r="2" style="left:22.54%;top:52.65%"><i>Peter Hannan salt-aged beef</i></span>
-            <span class="hl" data-r="2" style="left:37.15%;top:55.77%"><i>Carlingford Oysters</i></span>
-            <span class="hl" data-r="2" style="left:37.29%;top:62.13%"><i>Dublin Bay Prawns</i></span>
-            <span class="hl" data-r="2" style="left:49.72%;top:50.90%"><i>Manx Kippers</i></span>
-            <span class="hl" data-r="2" style="left:51.90%;top:57.26%"><i>Morecambe Bay Shrimp</i></span>
-            <span class="hl" data-r="3" style="left:77.67%;top:41.15%"><i>Haddock</i></span>
-            <span class="hl" data-r="3" style="left:66.50%;top:48.31%"><i>Yorkshire Pheasant</i></span>
-            <span class="hl" data-r="3" style="left:63.27%;top:54.24%"><i>Yorkshire Grouse</i></span>
-            <span class="hl" data-r="3" style="left:72.82%;top:56.94%"><i>Yorkshire Rhubarb</i></span>
-            <span class="hl" data-r="3" style="left:62.01%;top:59.75%"><i>Mrs Kirkham&#x27;s Lancashire</i></span>
-            <span class="hl" data-r="3" style="left:70.79%;top:61.49%"><i>Lincolnshire Poacher</i></span>
-            <span class="hl" data-r="3" style="left:78.79%;top:61.23%"><i>Lincolnshire White Onions</i></span>
-            <span class="hl" data-r="3" style="left:71.21%;top:66.84%"><i>Colston Bassett Stilton</i></span>
-            <span class="hl" data-r="4" style="left:53.30%;top:67.69%"><i>Welsh Lamb</i></span>
-            <span class="hl" data-r="4" style="left:61.59%;top:70.71%"><i>Asparagus</i></span>
-            <span class="hl" data-r="4" style="left:57.72%;top:75.64%"><i>Severn &amp; Wye Smoked Salmon</i></span>
-            <span class="hl" data-r="4" style="left:68.05%;top:74.31%"><i>Clarence Court Eggs</i></span>
-            <span class="hl" data-r="4" style="left:60.60%;top:80.93%"><i>Glastonbury Whey Butter</i></span>
-            <span class="hl" data-r="4" style="left:59.97%;top:85.28%"><i>Ogleshield</i></span>
-            <span class="hl" data-r="4" style="left:67.49%;top:84.22%"><i>Somerset Cider Brandy</i></span>
-            <span class="hl" data-r="5" style="left:42.06%;top:82.79%"><i>Devon Crab</i></span>
-            <span class="hl" data-r="5" style="left:47.96%;top:87.02%"><i>Devonshire Duck</i></span>
-            <span class="hl" data-r="5" style="left:54.42%;top:85.75%"><i>Lyme Bay</i></span>
-            <span class="hl" data-r="5" style="left:36.38%;top:88.51%"><i>Sea Vegetables</i></span>
-            <span class="hl" data-r="5" style="left:57.23%;top:91.53%"><i>Torbay Cod</i></span>
-            <span class="hl" data-r="5" style="left:46.42%;top:93.96%"><i>Poole Bay Clams</i></span>
-            <span class="hl" data-r="5" style="left:52.74%;top:94.54%"><i>Dorset Scallops</i></span>
-            <span class="hl" data-r="5" style="left:25.63%;top:92.74%"><i>Cornish Lobster</i></span>
-            <span class="hl" data-r="5" style="left:36.87%;top:97.19%"><i>Cornish Mackerel</i></span>
-            <span class="hl" data-r="5" style="left:6.95%;top:96.13%"><i>Jersey Royal Potatoes</i></span>
-            <span class="hl" data-r="6" style="left:87.92%;top:64.94%"><i>Hodmedod&#x27;s Pulses &amp; Grains</i></span>
-            <span class="hl" data-r="6" style="left:89.19%;top:70.07%"><i>Dingley Dell Pork</i></span>
-            <span class="hl" data-r="6" style="left:78.58%;top:71.03%"><i>Suffolk Venison</i></span>
-            <span class="hl" data-r="6" style="left:84.41%;top:73.46%"><i>Baron Bigod</i></span>
-            <span class="hl" data-r="6" style="left:77.04%;top:75.95%"><i>La Latteria Burrata</i></span>
-            <span class="hl" data-r="6" style="left:94.17%;top:75.79%"><i>Maldon Oysters</i></span>
-            <span class="hl" data-r="6" style="left:83.15%;top:79.66%"><i>Bermondsey Oyster Mushrooms</i></span>
-            <span class="hl" data-r="6" style="left:88.55%;top:81.30%"><i>Kentish Cherries</i></span>
-            <span class="hl" data-r="6" style="left:83.85%;top:83.74%"><i>Berries</i></span>
-            <span class="hl" data-r="6" style="left:74.02%;top:80.08%"><i>Chalk Stream Trout</i></span>
-            <span class="hl" data-r="6" style="left:69.03%;top:81.36%"><i>Hampshire Watercress</i></span>
-            <span class="hl" data-r="6" style="left:80.90%;top:85.81%"><i>Exton Park Sparkling</i></span>
-            <span class="hl" data-r="6" style="left:76.76%;top:89.72%"><i>Isle of Wight Tomatoes</i></span>
-            <span class="hl" data-r="6" style="left:69.03%;top:90.84%"><i>Mermaid Gin</i></span>
-            <span class="hl" data-r="6" style="left:90.87%;top:87.76%"><i>Dover Sole</i></span>
+            <span class="hl" data-r="1" style="left:53.16%;top:14.62%" data-ix="49.81" data-iy="13.88"><i>Dalmore Whisky</i></span>
+            <span class="hl" data-r="1" style="left:57.09%;top:24.05%" data-ix="53.42" data-iy="24.24"><i>Highland Venison</i></span>
+            <span class="hl" data-r="1" style="left:44.17%;top:24.42%" data-ix="43.89" data-iy="24.14"><i>Chanterelles</i></span>
+            <span class="hl" data-r="1" style="left:27.46%;top:25.16%" data-ix="27.71" data-iy="23.29"><i>Scallops</i></span>
+            <span class="hl" data-r="1" style="left:20.72%;top:32.36%" data-ix="20.07" data-iy="29.87"><i>Native Lobster</i></span>
+            <span class="hl" data-r="1" style="left:47.47%;top:30.67%" data-ix="47.63" data-iy="28.44"><i>Loch Duart Salmon</i></span>
+            <span class="hl" data-r="1" style="left:50.28%;top:38.51%" data-ix="49.94" data-iy="36.50"><i>Haggis</i></span>
+            <span class="hl" data-r="2" style="left:22.54%;top:52.65%" data-ix="27.09" data-iy="48.29"><i>Peter Hannan salt-aged beef</i></span>
+            <span class="hl" data-r="2" style="left:37.15%;top:55.77%" data-ix="37.29" data-iy="54.73"><i>Carlingford Oysters</i></span>
+            <span class="hl" data-r="2" style="left:37.29%;top:62.13%" data-ix="37.27" data-iy="60.11"><i>Dublin Bay Prawns</i></span>
+            <span class="hl" data-r="2" style="left:49.72%;top:50.90%" data-ix="49.54" data-iy="50.02"><i>Manx Kippers</i></span>
+            <span class="hl" data-r="2" style="left:51.90%;top:57.26%" data-ix="51.79" data-iy="54.82"><i>Morecambe Bay Shrimp</i></span>
+            <span class="hl" data-r="3" style="left:77.67%;top:41.15%" data-ix="76.98" data-iy="39.13"><i>Haddock</i></span>
+            <span class="hl" data-r="3" style="left:66.50%;top:48.31%" data-ix="63.63" data-iy="46.85"><i>Yorkshire Pheasant</i></span>
+            <span class="hl" data-r="3" style="left:63.27%;top:54.24%" data-ix="62.98" data-iy="53.10"><i>Yorkshire Grouse</i></span>
+            <span class="hl" data-r="3" style="left:72.82%;top:56.94%" data-ix="72.18" data-iy="55.86"><i>Yorkshire Rhubarb</i></span>
+            <span class="hl" data-r="3" style="left:62.01%;top:59.75%" data-ix="62.58" data-iy="57.77"><i>Mrs Kirkham&#x27;s Lancashire</i></span>
+            <span class="hl" data-r="3" style="left:70.79%;top:61.49%" data-ix="70.89" data-iy="61.28"><i>Lincolnshire Poacher</i></span>
+            <span class="hl" data-r="3" style="left:78.79%;top:61.23%" data-ix="77.50" data-iy="59.49"><i>Lincolnshire White Onions</i></span>
+            <span class="hl" data-r="3" style="left:71.21%;top:66.84%" data-ix="72.00" data-iy="65.10"><i>Colston Bassett Stilton</i></span>
+            <span class="hl" data-r="4" style="left:53.30%;top:67.69%" data-ix="53.53" data-iy="65.49"><i>Welsh Lamb</i></span>
+            <span class="hl" data-r="4" style="left:61.59%;top:70.71%" data-ix="60.53" data-iy="69.38"><i>Asparagus</i></span>
+            <span class="hl" data-r="4" style="left:57.72%;top:75.64%" data-ix="54.31" data-iy="75.37"><i>Severn &amp; Wye Smoked Salmon</i></span>
+            <span class="hl" data-r="4" style="left:68.05%;top:74.31%" data-ix="68.27" data-iy="72.82"><i>Clarence Court Eggs</i></span>
+            <span class="hl" data-r="4" style="left:60.60%;top:80.93%" data-ix="61.03" data-iy="81.02"><i>Glastonbury Whey Butter</i></span>
+            <span class="hl" data-r="4" style="left:59.97%;top:85.28%" data-ix="59.23" data-iy="85.54"><i>Ogleshield</i></span>
+            <span class="hl" data-r="4" style="left:67.49%;top:84.22%" data-ix="64.87" data-iy="84.32"><i>Somerset Cider Brandy</i></span>
+            <span class="hl" data-r="5" style="left:42.06%;top:82.79%" data-ix="41.93" data-iy="81.18"><i>Devon Crab</i></span>
+            <span class="hl" data-r="5" style="left:47.96%;top:87.02%" data-ix="49.50" data-iy="85.27"><i>Devonshire Duck</i></span>
+            <span class="hl" data-r="5" style="left:54.42%;top:85.75%" data-ix="54.10" data-iy="85.21"><i>Lyme Bay</i></span>
+            <span class="hl" data-r="5" style="left:36.38%;top:88.51%" data-ix="35.95" data-iy="86.66"><i>Sea Vegetables</i></span>
+            <span class="hl" data-r="5" style="left:57.23%;top:91.53%" data-ix="56.06" data-iy="90.73"><i>Torbay Cod</i></span>
+            <span class="hl" data-r="5" style="left:46.42%;top:93.96%" data-ix="48.32" data-iy="92.01"><i>Poole Bay Clams</i></span>
+            <span class="hl" data-r="5" style="left:52.74%;top:94.54%" data-ix="53.14" data-iy="93.04"><i>Dorset Scallops</i></span>
+            <span class="hl" data-r="5" style="left:25.63%;top:92.74%" data-ix="25.92" data-iy="90.10"><i>Cornish Lobster</i></span>
+            <span class="hl" data-r="5" style="left:36.87%;top:97.19%" data-ix="37.01" data-iy="95.48"><i>Cornish Mackerel</i></span>
+            <span class="hl" data-r="5" style="left:6.95%;top:96.13%" data-ix="7.45" data-iy="93.87"><i>Jersey Royal Potatoes</i></span>
+            <span class="hl" data-r="6" style="left:87.92%;top:64.94%" data-ix="89.47" data-iy="64.77"><i>Hodmedod&#x27;s Pulses &amp; Grains</i></span>
+            <span class="hl" data-r="6" style="left:89.19%;top:70.07%" data-ix="88.51" data-iy="70.30"><i>Dingley Dell Pork</i></span>
+            <span class="hl" data-r="6" style="left:78.58%;top:71.03%" data-ix="78.49" data-iy="69.71"><i>Suffolk Venison</i></span>
+            <span class="hl" data-r="6" style="left:84.41%;top:73.46%" data-ix="85.61" data-iy="72.87"><i>Baron Bigod</i></span>
+            <span class="hl" data-r="6" style="left:77.04%;top:75.95%" data-ix="77.24" data-iy="76.07"><i>La Latteria Burrata</i></span>
+            <span class="hl" data-r="6" style="left:94.17%;top:75.79%" data-ix="91.00" data-iy="75.86"><i>Maldon Oysters</i></span>
+            <span class="hl" data-r="6" style="left:83.15%;top:79.66%" data-ix="82.32" data-iy="78.96"><i>Bermondsey Oyster Mushrooms</i></span>
+            <span class="hl" data-r="6" style="left:88.55%;top:81.30%" data-ix="89.02" data-iy="80.27"><i>Kentish Cherries</i></span>
+            <span class="hl" data-r="6" style="left:83.85%;top:83.74%" data-ix="83.82" data-iy="83.83"><i>Berries</i></span>
+            <span class="hl" data-r="6" style="left:74.02%;top:80.08%" data-ix="74.76" data-iy="79.07"><i>Chalk Stream Trout</i></span>
+            <span class="hl" data-r="6" style="left:69.03%;top:81.36%" data-ix="68.19" data-iy="79.69"><i>Hampshire Watercress</i></span>
+            <span class="hl" data-r="6" style="left:80.90%;top:85.81%" data-ix="78.94" data-iy="84.76"><i>Exton Park Sparkling</i></span>
+            <span class="hl" data-r="6" style="left:76.76%;top:89.72%" data-ix="76.39" data-iy="87.60"><i>Isle of Wight Tomatoes</i></span>
+            <span class="hl" data-r="6" style="left:69.03%;top:90.84%" data-ix="69.06" data-iy="88.97"><i>Mermaid Gin</i></span>
+            <span class="hl" data-r="6" style="left:90.87%;top:87.76%" data-ix="89.93" data-iy="85.92"><i>Dover Sole</i></span>
           </div>
           <div class="map-tip" aria-hidden="true"></div>
         </div>
@@ -913,7 +917,21 @@
       steps.forEach(s => s.classList.toggle('active', s === step));
       const r = step.dataset.r;
       spots.forEach(h => h.classList.toggle('on', r === 'all' || h.dataset.r === r));
-      place();
+      place(); spotlight();
+    };
+    const journey = document.querySelector('.journey'), focusImg = document.querySelector('.map-focus');
+    let ft;
+    const spotlight = () => {
+      if (!current || !focusImg) return;
+      const all = current.dataset.r === 'all';
+      journey.classList.toggle('focus', !all);
+      focusImg.classList.remove('show'); clearTimeout(ft);
+      if (all) return;
+      const R = Math.round(inner.clientWidth * 0.062), r2 = Math.round(R * .8);
+      const m = spots.filter(h => h.classList.contains('on')).map(h =>
+        'radial-gradient(circle ' + R + 'px at ' + h.dataset.ix + '% ' + h.dataset.iy + '%, #000 55%, transparent 100%),' +
+        'radial-gradient(circle ' + r2 + 'px at ' + h.style.left + ' ' + h.style.top + ', #000 55%, transparent 100%)').join(',');
+      ft = setTimeout(() => { focusImg.style.webkitMaskImage = m; focusImg.style.maskImage = m; focusImg.classList.add('show'); }, 260);
     };
     const place = () => {
       if (!current) return;
@@ -938,7 +956,7 @@
       });
       h.addEventListener('mouseleave', () => tip.classList.remove('on'));
     });
-    addEventListener('resize', place);
+    addEventListener('resize', () => { place(); spotlight(); });
     go(steps[0]);
   })();
 
