@@ -575,3 +575,41 @@
 
 /* Inner pages: solid white header with the logo, sitting above the hero */
 .page-hero{margin-top:var(--head)}
+
+/* Desktop and laptop sizing: tighter type and spacing so sections fit on a laptop screen.
+   Phones are untouched. */
+@media (min-width:901px){
+  .intro{padding:clamp(80px,min(9vw,12vh),130px) 0 clamp(64px,min(7vw,10vh),110px)}
+  .intro h2{font-size:clamp(30px,min(3.4vw,5.6vh),50px);max-width:900px}
+  .panel h3{font-size:clamp(28px,2.2vw,36px)}
+  .whatson,.private,.menus,.visit,.producers{padding:clamp(72px,min(8vw,11vh),120px) 0}
+  .sec-head h2,.menus h2{font-size:clamp(36px,min(3.8vw,6.2vh),58px)}
+  .private h2,.prod-text h2{font-size:clamp(36px,min(3.6vw,6vh),54px)}
+  .feature{height:clamp(480px,min(40vw,68vh),660px)}
+  .feature-text h3{font-size:clamp(40px,min(4.2vw,7vh),66px)}
+  .ev-text h3{font-size:clamp(28px,2.5vw,40px)}
+  .dome-text p.big{font-size:clamp(40px,min(5.4vw,9vh),88px)}
+  .menu-links a{font-size:clamp(22px,1.9vw,28px);padding:14px 0}
+  .signature h3{font-size:clamp(26px,2.1vw,32px)}
+  .visit-grid{margin-top:48px}
+  .site-footer{padding:clamp(64px,7vw,100px) 0 36px}
+  .hero-line{font-size:clamp(20px,1.9vw,28px)}
+  /* inner pages */
+  .page-hero{height:clamp(420px,58vh,620px)}
+  .page-hero h1{font-size:clamp(46px,min(5.8vw,9.5vh),92px)}
+  .sec{padding:clamp(72px,min(8vw,11vh),120px) 0}
+  .sec.tight{padding:clamp(50px,min(5vw,8vh),80px) 0}
+  .h2,.ev-row h2,.menu-head h2{font-size:clamp(34px,min(3.6vw,6vh),54px)}
+  .h3,.tile h3{font-size:clamp(26px,2.1vw,34px)}
+  .big{font-size:clamp(26px,min(2.6vw,4.4vh),38px)}
+  .quote{font-size:clamp(28px,min(3vw,5vh),44px)}
+  .cta-band{padding:clamp(72px,min(8vw,11vh),110px) 0}
+  .cta-band h2{font-size:clamp(36px,min(3.8vw,6.2vh),58px)}
+  .ev-row{padding:clamp(40px,5vw,64px) 0}
+  .menu-sec{padding:clamp(56px,6vw,96px) 0}
+  .cards,.press,.perks,.steps{margin-top:44px}
+  /* keep tall images and the map within one screen */
+  .private .img{aspect-ratio:auto;height:min(calc(100vh - 170px),680px)}
+  .producers .map{max-width:min(780px,calc((100vh - 130px) * 712 / 944))}
+  .split2 .img{max-height:calc(100vh - 150px)}
+}
