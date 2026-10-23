@@ -647,3 +647,10 @@
   .producers-j .prod-head h2{font-size:clamp(34px,min(3.6vw,6vh),54px)}
   .producers-j .step h3{font-size:clamp(28px,min(2.6vw,4.4vh),40px)}
 }
+
+/* Mobile menu: breathing room between the links and the details */
+@media (max-width:900px){
+  .overlay-main{display:flex;flex-direction:column;gap:44px}
+  .overlay-info{padding-top:36px;border-top:1px solid rgba(255,255,255,.14);gap:26px}
+  .overlay li a{line-height:1.18}
+}
