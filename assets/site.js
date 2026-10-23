@@ -7,7 +7,7 @@
 
   // Header state
   const hero = document.querySelector('.hero, .page-hero');
-  const onScroll = () => root.classList.toggle('scrolled', !hero || window.scrollY > hero.offsetHeight - 100);
+  const onScroll = () => root.classList.toggle('scrolled', !hero || hero.classList.contains('page-hero') || window.scrollY > hero.offsetHeight - 100);
   onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
 
   // Overlay menu

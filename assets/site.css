@@ -572,3 +572,6 @@
     .dl a{font-size:21px}
     .hours li{font-size:16px}
   }
+
+/* Inner pages: solid white header with the logo, sitting above the hero */
+.page-hero{margin-top:var(--head)}
