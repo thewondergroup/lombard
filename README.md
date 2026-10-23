@@ -23,5 +23,7 @@ It is hosted on GitHub Pages for review only and set to `noindex`, so search eng
 - `producers-map.html`: the animated map on its own
 - `producers-journey.html`: the scrolling map journey on its own
 
+- `images/photos/`: the venue's own photography, resized for the web (`-l` 2000px, `-m` 1000px)
+
 ## Before launch
-Photos and the hero video currently load from the live Wix site. Download them into `images/` and update the links.
+Most photos are now served from `images/photos/`. A few still load from the live Wix site: the hero video and its poster, the Christmas dining room, Head Chef James Holden, Goosebox, and the wedding and Fridays galleries. Download those into `images/` too.
