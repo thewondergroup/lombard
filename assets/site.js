@@ -155,10 +155,11 @@
   (function () {
     const map = document.querySelector('.producers .map'); if (!map) return;
     const view = document.createElement('div'); view.className = 'map-view' + (map.classList.contains('reveal') ? ' reveal' : '');
-    map.classList.remove('reveal'); map.parentNode.insertBefore(view, map); view.appendChild(map);
+    const box = document.createElement('div'); box.className = 'map-box';
+    map.classList.remove('reveal'); map.parentNode.insertBefore(box, map); box.appendChild(view); view.appendChild(map);
     const ui = document.createElement('div'); ui.className = 'map-zoom';
     ui.innerHTML = '<button type="button" class="in" aria-label="Zoom in">+</button><button type="button" class="out" aria-label="Zoom out">&minus;</button><button type="button" class="rs" aria-label="Reset zoom">1:1</button>';
-    view.appendChild(ui);
+    box.appendChild(ui);
     const MAX = 3; let s = 1, x = 0, y = 0;
     const clamp = () => { const w = view.clientWidth, h = view.clientHeight; x = Math.min(0, Math.max(w - w * s, x)); y = Math.min(0, Math.max(h - h * s, y)); };
     const apply = () => { clamp(); map.style.transform = s === 1 ? '' : 'translate(' + x + 'px,' + y + 'px) scale(' + s + ')'; map.style.setProperty('--inv', 1 / s); view.classList.toggle('zoomed', s > 1);
@@ -170,7 +171,7 @@
     ui.querySelector('.rs').onclick = () => { s = 1; x = y = 0; apply(); };
     view.addEventListener('dblclick', e => { if (e.target.closest('.map-zoom')) return; const r = view.getBoundingClientRect(); zoomTo(s >= MAX ? 1 : s + 1, e.clientX - r.left, e.clientY - r.top); });
     let drag = null;
-    view.addEventListener('pointerdown', e => { if (s === 1 || e.target.closest('.map-zoom')) return; drag = { px: e.clientX, py: e.clientY, x, y, moved: false }; });
+    view.addEventListener('pointerdown', e => { if (s === 1 || e.target.closest('.map-zoom')) return; e.preventDefault(); drag = { px: e.clientX, py: e.clientY, x, y, moved: false }; });
     window.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - drag.px, dy = e.clientY - drag.py;
       if (!drag.moved && Math.hypot(dx, dy) < 4) return; drag.moved = true; view.classList.add('dragging'); x = drag.x + dx; y = drag.y + dy; apply(); });
     window.addEventListener('pointerup', () => { drag = null; view.classList.remove('dragging'); });
