@@ -17,13 +17,12 @@ It is hosted on GitHub Pages for review only and set to `noindex`, so search eng
 ## Shared files
 - `assets/site.css`, `assets/site.js`, `assets/img/`: shared styles, script, logos and favicon
 - `images/`: producers map artwork and animation sprites
+- `images/photos/`: the venue's own photography, resized for the web (`-l` 2000px, `-m` 1000px)
 
 ## Older versions, kept for reference
 - `v1.html`: the first design
 - `producers-map.html`: the animated map on its own
 - `producers-journey.html`: the scrolling map journey on its own
-
-- `images/photos/`: the venue's own photography, resized for the web (`-l` 2000px, `-m` 1000px)
 
 ## Before launch
 Most photos are now served from `images/photos/`. A few still load from the live Wix site: the hero video and its poster, the Christmas dining room, Head Chef James Holden, Goosebox, and the wedding and Fridays galleries. Download those into `images/` too.
