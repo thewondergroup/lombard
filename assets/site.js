@@ -150,3 +150,33 @@
     location.href = 'mailto:' + f.dataset.mailto + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
     const b = f.querySelector('button'); if (b) b.textContent = 'Opening your email…';
   }));
+
+  // Producers map: zoom buttons, drag to pan, double-click to zoom
+  (function () {
+    const map = document.querySelector('.producers .map'); if (!map) return;
+    const view = document.createElement('div'); view.className = 'map-view' + (map.classList.contains('reveal') ? ' reveal' : '');
+    map.classList.remove('reveal'); map.parentNode.insertBefore(view, map); view.appendChild(map);
+    const ui = document.createElement('div'); ui.className = 'map-zoom';
+    ui.innerHTML = '<button type="button" class="in" aria-label="Zoom in">+</button><button type="button" class="out" aria-label="Zoom out">&minus;</button><button type="button" class="rs" aria-label="Reset zoom">1:1</button>';
+    view.appendChild(ui);
+    const MAX = 3; let s = 1, x = 0, y = 0;
+    const clamp = () => { const w = view.clientWidth, h = view.clientHeight; x = Math.min(0, Math.max(w - w * s, x)); y = Math.min(0, Math.max(h - h * s, y)); };
+    const apply = () => { clamp(); map.style.transform = s === 1 ? '' : 'translate(' + x + 'px,' + y + 'px) scale(' + s + ')'; map.style.setProperty('--inv', 1 / s); view.classList.toggle('zoomed', s > 1);
+      ui.querySelector('.in').disabled = s >= MAX; ui.querySelector('.out').disabled = s <= 1; ui.querySelector('.rs').disabled = s <= 1; };
+    const zoomTo = (ns, cx, cy) => { ns = Math.max(1, Math.min(MAX, ns)); if (cx == null) { cx = view.clientWidth / 2; cy = view.clientHeight / 2; }
+      x = cx - (cx - x) * ns / s; y = cy - (cy - y) * ns / s; s = ns; apply(); };
+    ui.querySelector('.in').onclick = () => zoomTo(s + .75);
+    ui.querySelector('.out').onclick = () => zoomTo(s - .75);
+    ui.querySelector('.rs').onclick = () => { s = 1; x = y = 0; apply(); };
+    view.addEventListener('dblclick', e => { if (e.target.closest('.map-zoom')) return; const r = view.getBoundingClientRect(); zoomTo(s >= MAX ? 1 : s + 1, e.clientX - r.left, e.clientY - r.top); });
+    let drag = null;
+    view.addEventListener('pointerdown', e => { if (s === 1 || e.target.closest('.map-zoom')) return; drag = { px: e.clientX, py: e.clientY, x, y, moved: false }; });
+    window.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - drag.px, dy = e.clientY - drag.py;
+      if (!drag.moved && Math.hypot(dx, dy) < 4) return; drag.moved = true; view.classList.add('dragging'); x = drag.x + dx; y = drag.y + dy; apply(); });
+    window.addEventListener('pointerup', () => { drag = null; view.classList.remove('dragging'); });
+    window.addEventListener('resize', apply);
+    if (view.classList.contains('reveal') && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { view.classList.add('in'); io.disconnect(); } }), { threshold: .12 }); io.observe(view);
+    } else view.classList.add('in');
+    apply();
+  })();
