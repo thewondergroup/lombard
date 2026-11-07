@@ -721,3 +721,11 @@
 .op-card .link{color:var(--white)}
 @media (max-width:900px){.op-grid{grid-template-columns:minmax(0,1fr)}.op-img{aspect-ratio:4/3}}
 .cards.two .tile .img{aspect-ratio:4/3}
+
+/* Page hero: grows with its content so long titles never run up into the header */
+.page-hero{height:auto!important;min-height:clamp(420px,62vh,640px);display:flex;flex-direction:column;justify-content:flex-end}
+.page-hero .wrap{position:relative;bottom:auto;padding-top:clamp(56px,8vh,96px);padding-bottom:clamp(48px,7vh,88px)}
+.page-hero h1{max-width:17ch;text-wrap:balance}
+.page-hero .sub{text-wrap:pretty}
+.page-hero::after{background:linear-gradient(90deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.18) 60%,rgba(0,0,0,.05) 100%),linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.55) 100%)}
+@media (max-width:900px){.page-hero{min-height:clamp(420px,70vh,580px)}}
