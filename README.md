@@ -8,7 +8,7 @@ It is hosted on GitHub Pages for review only and set to `noindex`, so search eng
 - `menus.html`: every menu on one page with sticky tabs (breakfast, à la carte, vegetarian, desserts, brunch, Sunday lunch, drinks)
 - `whats-on.html`: events and offers
 - `fridays.html`, `bottomless-brunch.html`, `sunday-lunch.html`, `christmas.html`: individual experiences
-- `private-dining.html`, `weddings.html`: spaces and enquiry forms
+- `private-dining.html`, `exclusive-hire.html`, `weddings.html`: events pages from the client's copy, with capacity tables and enquiry forms; forms open an email to the events team until the CRM or DesignMyNight link is added
 - `our-story.html`: the history, Head Chef and the scrolling producers map journey
 - `gift-cards.html`, `loyalty.html`
 - `visit.html`: directions, hours, contact and careers

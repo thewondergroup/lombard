@@ -27,8 +27,8 @@
 
   // Open now (London time)
   (function () {
-    const hours = {1:[7,23],2:[7,23],3:[7,23],4:[7,23],5:[7,23],6:[12,17],0:[12,18]};
-    const fmt = h => (h % 12 || 12) + (h < 12 ? 'am' : 'pm');
+    const hours = {1:[7,23],2:[7,23],3:[7,23],4:[7,23],5:[7,23],6:[12,17.5],0:[12,18]};
+    const fmt = h => { const H = Math.floor(h), m = Math.round((h - H) * 60); return (H % 12 || 12) + (m ? '.' + String(m).padStart(2, '0') : '') + (H < 12 ? 'am' : 'pm'); };
     const names = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date());
     const get = t => parts.find(p => p.type === t).value;

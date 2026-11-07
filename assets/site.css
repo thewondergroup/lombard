@@ -654,3 +654,70 @@
   .overlay-info{padding-top:36px;border-top:1px solid rgba(255,255,255,.14);gap:26px}
   .overlay li a{line-height:1.18}
 }
+
+/* Events pages: capacity tables, host lists, inclusions */
+.cap-wrap{margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--ink)}
+.cap{width:100%;border-collapse:collapse;font-size:16px;line-height:1.5}
+.cap th,.cap td{text-align:left;vertical-align:top;padding:18px 20px 18px 0;border-bottom:1px solid var(--line)}
+.cap thead th{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding-top:16px;padding-bottom:14px}
+.cap tbody th{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.2;color:var(--ink);width:22%}
+.cap td{color:var(--body)}
+.cap-note{margin-top:22px;font-size:15px;color:var(--muted)}
+.hosts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,44px) clamp(20px,3vw,44px);margin-top:48px}
+.host{border-top:1px solid var(--line);padding-top:22px}
+.host h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2vw,30px);line-height:1.15}
+.host p{margin-top:10px;font-size:16px;line-height:1.65;color:var(--body)}
+.hosts.on-green .host{border-top-color:rgba(255,255,255,.25)}
+.hosts.on-green .host h3{color:var(--white)}
+.hosts.on-green .host p{color:rgba(255,255,255,.82)}
+.hosts.on-green a{color:var(--yellow)}
+.incl{list-style:none;margin:26px 0 0;padding:0}
+.incl li{padding:16px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.6;color:var(--body)}
+.incl li:first-child{border-top:1px solid var(--line)}
+.incl b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;color:var(--ink);margin-bottom:4px}
+.aside{margin-top:22px;font-size:15px;line-height:1.65;color:var(--muted)}
+.aside a{color:var(--ink)}
+.lede-sm{margin-top:16px;max-width:620px;font-size:18px;line-height:1.6;color:var(--body)}
+.steps.five{grid-template-columns:repeat(5,minmax(0,1fr))}
+.steps.five h3{font-size:clamp(22px,1.8vw,28px)}
+.form label small{text-transform:none;letter-spacing:0;font-size:12px;font-weight:400}
+.form select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%2315302A' stroke-width='1.3'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 2px center;padding-right:24px}
+.sec.stone .form input,.sec.stone .form select,.sec.stone .form textarea{background-color:transparent}
+@media (max-width:1000px){.hosts{grid-template-columns:repeat(2,minmax(0,1fr))}.steps.five{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){
+  .hosts,.steps.five{grid-template-columns:minmax(0,1fr)}
+  .cap thead{display:none}
+  .cap,.cap tbody,.cap tr,.cap th,.cap td{display:block;width:100%}
+  .cap tr{padding:18px 0;border-bottom:1px solid var(--line)}
+  .cap th,.cap td{border:0;padding:4px 0}
+  .cap tbody th{width:auto;font-size:24px;margin-bottom:6px}
+  .cap td::before{content:attr(data-l);display:block;font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+}
+
+/* Friday offer */
+.ticker{background:var(--yellow);color:var(--ink);overflow:hidden;display:flex;white-space:nowrap;border-bottom:1px solid rgba(21,48,42,.15)}
+.ticker-track{display:flex;flex:none;align-items:center;gap:28px;padding:16px 14px;animation:tick 38s linear infinite}
+.ticker span{font-family:var(--serif);font-size:clamp(22px,2.2vw,30px);font-style:italic}
+.ticker i{font-style:normal;font-size:12px}
+@keyframes tick{to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+.offer-poster{background:var(--green-deep);color:var(--white);padding:clamp(64px,8vw,120px) 0}
+.op-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,80px);align-items:center}
+.op-img{aspect-ratio:4/5;overflow:hidden}
+.op-img img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.op-card{border:1px solid rgba(242,194,48,.55);padding:clamp(28px,4vw,60px);position:relative}
+.op-card::after{content:"";position:absolute;inset:8px;border:1px solid rgba(242,194,48,.22);pointer-events:none}
+.op-card .label{color:var(--yellow)}
+.op-card h2{font-family:var(--serif);font-weight:300;font-size:clamp(38px,min(4.4vw,7vh),68px);line-height:1.04;margin-top:18px}
+.op-card h2 em{color:var(--yellow)}
+.op-price{display:flex;align-items:flex-start;font-family:var(--serif);font-weight:300;color:var(--yellow);font-size:clamp(110px,min(12vw,18vh),190px);line-height:.85;margin-top:30px}
+.op-price .cur{font-size:.42em;margin:.12em .04em 0 0}
+.op-price small{align-self:flex-end;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75);margin:0 0 .9em 16px}
+.op-incl{list-style:none;margin:30px 0 0;padding:0}
+.op-incl li{position:relative;padding:12px 0 12px 30px;border-top:1px solid rgba(255,255,255,.16);font-size:17px}
+.op-incl li:last-child{border-bottom:1px solid rgba(255,255,255,.16)}
+.op-incl li::before{content:"";position:absolute;left:2px;top:50%;width:12px;height:6px;border-left:1.5px solid var(--yellow);border-bottom:1.5px solid var(--yellow);transform:translateY(-70%) rotate(-45deg)}
+.op-card .actions{margin-top:32px}
+.op-card .link{color:var(--white)}
+@media (max-width:900px){.op-grid{grid-template-columns:minmax(0,1fr)}.op-img{aspect-ratio:4/3}}
+.cards.two .tile .img{aspect-ratio:4/3}
