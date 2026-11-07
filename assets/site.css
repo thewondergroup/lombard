@@ -743,3 +743,15 @@
 .page-hero .sub{margin-left:auto;margin-right:auto}
 .page-hero .actions{justify-content:center}
 .page-hero::after{background:radial-gradient(ellipse 70% 75% at 50% 52%,rgba(0,0,0,.6) 0%,rgba(0,0,0,.36) 60%,rgba(0,0,0,.2) 100%)}
+
+/* FAQs */
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,80px);align-items:start}
+.faq-list{border-top:1px solid var(--ink)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary h3{font-family:var(--serif);font-weight:400;font-size:clamp(21px,1.8vw,26px);line-height:1.25;color:var(--ink)}
+.faq-item summary::after{content:"+";flex:none;font-size:24px;font-weight:300;color:var(--ink);transition:transform .25s}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{padding:0 0 24px;max-width:640px;font-size:16px;line-height:1.7;color:var(--body)}
+@media (max-width:900px){.faq-grid{grid-template-columns:minmax(0,1fr)}}
