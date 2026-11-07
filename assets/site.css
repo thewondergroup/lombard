@@ -734,3 +734,12 @@
 .tabs a{transition:color .25s,background-color .25s,border-color .25s}
 .tabs a:hover{background:rgba(242,194,48,.18)}
 .tabs a.on{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+
+/* Page hero: centred */
+.page-hero{justify-content:center}
+.page-hero .wrap{text-align:center;padding-top:clamp(64px,9vh,110px);padding-bottom:clamp(64px,9vh,110px)}
+.page-hero .label-rule::after{content:"";width:28px;height:1px;background:var(--yellow)}
+.page-hero h1{margin-left:auto;margin-right:auto;max-width:18ch}
+.page-hero .sub{margin-left:auto;margin-right:auto}
+.page-hero .actions{justify-content:center}
+.page-hero::after{background:radial-gradient(ellipse 70% 75% at 50% 52%,rgba(0,0,0,.6) 0%,rgba(0,0,0,.36) 60%,rgba(0,0,0,.2) 100%)}
