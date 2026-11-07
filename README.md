@@ -38,3 +38,13 @@ Most photos are now served from `images/photos/`. A few still load from the live
 2. Check that the canonical URLs match the final domain (currently https://www.1lombardstreet.com/).
 3. Set up 301 redirects from the old Wix URLs (for example `/fridays`, `/weddings`, `/bottomless-brunch`, `/whats-on`) to the new pages, so existing Google rankings carry over.
 4. Submit the sitemap in Google Search Console and Bing Webmaster Tools, and make sure the Google Business Profile hours and links match the site.
+
+## Journal (blog)
+Posts are written in Google Docs and listed in a Google Sheet. Every hour a GitHub Action (`.github/workflows/journal.yml`) reads the sheet, pulls each Doc and builds static pages at `/post/<slug>`, which is the same address pattern as the old Wix blog, so existing post links keep working. It also builds `journal.html`, and adds the posts to `sitemap.xml` and `llms.txt` with BlogPosting structured data.
+
+**Setup (once):** create a Google Sheet with the columns in `scripts/journal-sheet-template.csv`, share it as "Anyone with the link can view", and paste its link into `sheet_csv` in `scripts/journal-config.json`.
+
+**For writers:**
+1. Write the post in a Google Doc. Use Heading 1/2 for subheadings, normal bold, italics, links, bullet lists and images. Share the Doc as "Anyone with the link can view".
+2. Add a row to the sheet: Title, Date (YYYY-MM-DD), Author, a one-line Summary, a Hero image link (Google Drive or any image URL) and the Doc link. Category and Slug are optional.
+3. Set Status to `Publish`. The post goes live within the hour, or straight away if someone presses "Run workflow" in the Actions tab. Change Status back to `Draft` to take a post down. Edits to the Doc or sheet are picked up on the next run.
